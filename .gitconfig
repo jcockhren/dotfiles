@@ -1,0 +1,18 @@
+[user]
+	email = jurnell.cockhren@sophicware.com
+	name = Jurnell Cockhren
+[alias]
+	st = status
+	ci = commit
+	co = checkout
+	cl = clone
+	br = branch
+        lol = log --graph --decorate --pretty=oneline --abbrev-commit
+        lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+	m = merge
+[push]
+	default = current
+[color]
+	ui = true
+[merge]
+	ff = false
