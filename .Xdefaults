@@ -1,0 +1,15 @@
+URxvt*background: Black
+URxvt*foreground: White
+URxvt*scrollBar: false
+URxvt*font: xft:Terminus:medium:pixelsize=14
+URxvt*boldFont: xft:Terminus:bold:pixelsize=14
+!URxvt.font: -*-terminus-medium-*-*-*-8-*-*-*-*-*-*-*
+!URxvt.boldFont: -*-terminus-bold-*-*-*-8-*-*-*-*-*-*-*
+
+URxvt.urlLauncher: /usr/bin/firefox
+URxvt.matcher.button: 1
+
+URxvt*perl-lib: /usr/lib/urxvt/perl/
+URxvt*perl-ext-common: matcher,readline
+
+URxvt*geometry:115x30
