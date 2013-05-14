@@ -3,6 +3,7 @@ export PATH="$HOME/.local/bin:/usr/local/bin:/opt/e17/bin:$PATH"
 export PYTHONPATH="/opt/e17/lib/python2.7/site-packages:$PYTHONPATH"
 export LD_LIBRARY_PATH="/opt/lib64:/opt/e17/lib:$LD_LIBRARY_PATH"
 export PROJECT_HOME=$HOME/atiba/sources/django
+export VISUAL=vim
 source /usr/local/bin/virtualenvwrapper.sh
 #source /home/jurnell/.pythonbrew/etc/bashrc
 
