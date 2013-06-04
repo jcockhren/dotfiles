@@ -8,7 +8,7 @@ source /usr/local/bin/virtualenvwrapper.sh
 #source /home/jurnell/.pythonbrew/etc/bashrc
 
 #source /home/jurnell/.rvm/scripts/rvm
-
+bindkey -v
 source ~/.tools/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.tools/zshuery/zshuery.sh
 load_defaults
@@ -68,6 +68,30 @@ source ~/.tools/zsh-history-substring-search/zsh-history-substring-search.zsh
 #PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 eval "$(fasd --init auto)"
+
+alias gst='git status'
+alias gci='git commit'
+alias gco='git checkout'
+alias gbr='git branch'
+alias gcl='git clone'
+
+# cool ones
+alias rmr="rm -rf"
 alias ls="ls --color"
+alias ll='ls -l'
+alias la='ls -a'
+alias df='df -h'
 
 alias rdk="rvm use ruby-1.9.3@developingkids"
+
+# fasd
+alias v='f -e vi'
+
+for keycode in '[' '0'; do
+    bindkey "^[${keycode}A" history-substring-search-up
+    bindkey "^[${keycode}B" history-substring-search-down
+done
+unset keycode
+
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
