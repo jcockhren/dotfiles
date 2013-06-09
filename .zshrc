@@ -74,7 +74,7 @@ alias gci='git commit'
 alias gco='git checkout'
 alias gbr='git branch'
 alias gcl='git clone'
-
+alias gap='git add -p'
 # cool ones
 alias rmr="rm -rf"
 alias ls="ls --color"
