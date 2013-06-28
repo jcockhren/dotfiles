@@ -1,5 +1,11 @@
 	"autocmd! bufwritepost .vimrc source %
 set nocompatible
+let g:syntastic_cpp_compiler = 'clang++'
+"let g:syntastic_python_checker = 'flakes8'
+let g:syntastic_check_on_open = 1
+let g:syntastic_enable_signs = 1
+"let g:syntastic_auto_loc_list = 1
+
 call pathogen#infect()
 "set autoindent
 set smartindent
@@ -10,6 +16,10 @@ set ruler
 set wrap
 set incsearch
 set number
+set laststatus=2
+set t_Co=256
+set encoding=utf-8 
+"let g:Powerline_theme = 'solarized256'
 
 syntax on
 let mojo_highlight_data = 1
@@ -19,9 +29,14 @@ set softtabstop=4
 set shiftwidth=4
 set expandtab
 
-set wrap linebreak textwidth=0
+set nowrap linebreak textwidth=0
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
 
 filetype plugin on
+"set omnifunc=syntaxcomplete#Complete
 set grepprg=grep\ -nH\ $*
 let g:tex_flavor='latex'
 
@@ -37,6 +52,8 @@ autocmd BufNewFile,BufRead *.ninja set filetype=ninja
 
 "autocmd Filetype cpp set tags+=~/.vim/tags/stdlib
 "autocmd Filetype cpp set tags+=~/.vim/tags/qt4
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css,scss,styl set omnifunc=htmlcomplete#CompleteCSS
 autocmd Filetype ruby compiler ruby
 
 inoremap ( ()<Left>
@@ -57,10 +74,13 @@ inoremap <expr> }  strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}
 "let OmniCpp_MayCompleteArrow = 1
 "let OmniCpp_MayCompleteScope = 1
 
-"set completeopt=menuone,menu,longest,preview
+set completeopt=menuone,menu,longest,preview
 
-"autocmd CursorMovedI * if pumvisible()  == 0|pclose|endif
-"autocmd InsertLeave * if pumvisible()  == 0|pclose|endif
+set complete-=i
+
+
+autocmd CursorMovedI * if pumvisible()  == 0|pclose|endif
+autocmd InsertLeave * if pumvisible()  == 0|pclose|endif
 
 map <C-b> :!make<CR>
 map <C-u> :!./run_tests --log_level=test_suite<CR>
@@ -76,6 +96,8 @@ map <silent> ,V :source /home/jurnell/.vimrc<CR>:filetype detect<CR>:exe ":echo 
 let vimclojure#HighlightBuiltins=1
 let vimclojure#ParenRainbow=1
 
+
+"autocmd BufWritePost *.py call Flake8()
 
 let g:clojure_simplefold_nestable_start_expr = '\v\(defn'
 let g:clojure_simplefold_nestable_end_expr = '\v^\s*$'
@@ -114,7 +136,7 @@ let g:Tex_Env_sverb = "\\begin{sverb}\<CR>\uncover\<<++>\>{<++>}\<CR>\\end{sverb
 let g:Tex_AutoFolding = 0
 
 " use cppcheck
-comp cppcheck
+"comp cppcheck
 
 " plug make ouput on quickfix window
 command -nargs=* Make make <args> | cwindow 10
@@ -141,3 +163,129 @@ command -nargs=* Make make <args> | cwindow 10
 "noremap <silent> <F7> <ESC>:QFix<CR>
 
 nnoremap <F9> i<CR><ESC>
+let g:neocomplcache_enable_at_startup = 1
+let g:neocomplcache_enable_auto_select = 1
+map <c-j> <c-w>j
+map <c-k> <c-w>k
+map <c-l> <c-w>l
+map <c-h> <c-w>h
+map <c-q> <c-w>q
+
+" default the statusline to green when entering
+" Vim
+hi statusline guibg=DarkGrey ctermfg=8 guifg=White ctermbg=15
+"
+
+set statusline =%#identifier#
+set statusline+=[%t] "tail of the filename
+set statusline+=%*
+
+set statusline+=%#warningmsg#
+set statusline+=%{&ff!='unix'?'['.&ff.']':''}
+set statusline+=%*
+
+set statusline+=%#warningmsg#
+set statusline+=%{(&fenc!='utf-8'&&&fenc!='')?'['.&fenc.']':''}
+set statusline+=%*
+
+set statusline+=%h "help file flag
+set statusline+=%y "filetype
+
+set statusline+=%#identifier#
+set statusline+=%r
+set statusline+=%*
+
+set statusline+=%#identifier#
+set statusline+=%m
+set statusline+=%*
+
+set statusline+=%{fugitive#statusline()}
+
+set statusline+=%#error#
+set statusline+=%{StatuslineTabWarning()}
+set statusline+=%*
+
+set statusline+=%{StatuslineTrailingSpaceWarning()}
+
+"set statusline+=%{StatuslineLongLineWarning()}
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+set statusline+=%#error#
+set statusline+=%{&paste?'[paste]':''}
+set statusline+=%*
+
+set statusline+=%= "left/right separator
+set statusline+=%{StatuslineCurrentHighlight()}\ \ "current highlight
+set statusline+=%c, "cursor column
+set statusline+=%l/%L "cursor line/total lines
+set statusline+=\ %P "percent through file
+hi Visual  ctermfg=White ctermbg=LightBlue cterm=none
+
+function! StatuslineTrailingSpaceWarning()
+    if !exists("b:statusline_trailing_space_warning")
+        if !&modifiable
+            let b:statusline_trailing_space_warning = ''
+            return b:statusline_trailing_space_warning
+        endif
+        if search('\s\+$', 'nw') != 0
+            let b:statusline_trailing_space_warning = '[\s]'
+        else
+            let b:statusline_trailing_space_warning = ''
+        endif
+    endif
+    return b:statusline_trailing_space_warning
+endfunction
+
+function! StatuslineCurrentHighlight()
+    let name = synIDattr(synID(line('.'),col('.'),1),'name')
+    if name == ''
+        return ''
+    else
+        return '[' . name . ']'
+    endif
+endfunction
+
+
+function! StatuslineTabWarning()
+    if !exists("b:statusline_tab_warning")
+        let b:statusline_tab_warning = ''
+        if !&modifiable
+            return b:statusline_tab_warning
+        endif
+
+        let tabs = search('^\t', 'nw') != 0
+
+        "find spaces that
+        "arent used as
+        "alignment in the
+        "first indent column
+        let spaces = search('^ \{' . &ts . ',}[^\t]', 'nw') != 0
+        
+        if tabs && spaces
+            let b:statusline_tab_warning = '[mixed-indenting]'
+        elseif (spaces && !&et) || (tabs && &et)
+            let b:statusline_tab_warning = '[&et]'
+        endif
+    endif
+    return b:statusline_tab_warning
+endfunction
+
+set colorcolumn=80
+" highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+" match OverLength /\%81v.\+/
+
+map ev :vsplit
+map ee :split
+
+" Some git aliases for figutive usage
+map gci :Gcommit<CR>
+map glola :Git lola<CR>
+map glol :Git lol<CR>
+map ga :Gwrite<CR>
+map gst :Gstatus<CR>
+map gl :Glog<CR>
+
+map jk <ESC>
