@@ -75,6 +75,12 @@ alias gco='git checkout'
 alias gbr='git branch'
 alias gcl='git clone'
 alias gap='git add -p'
+alias gl='git log'
+alias gll='git lol'
+alias gla='git lola'
+alias gcia='git commit -a'
+alias gm='git merge --no-ff'
+
 # cool ones
 alias rmr="rm -rf"
 alias ls="ls --color"
