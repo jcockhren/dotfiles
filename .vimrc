@@ -20,6 +20,7 @@ set laststatus=2
 set t_Co=256
 set encoding=utf-8 
 "let g:Powerline_theme = 'solarized256'
+set foldmethod=indent
 
 syntax on
 let mojo_highlight_data = 1
@@ -29,7 +30,7 @@ set softtabstop=4
 set shiftwidth=4
 set expandtab
 
-set nowrap linebreak textwidth=0
+set nowrap linebreak textwidth=80
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -49,6 +50,7 @@ autocmd BufNewFile,BufRead *.pro set filetype=make
 
 autocmd BufNewFile,BufRead SCons* set filetype=scons
 autocmd BufNewFile,BufRead *.ninja set filetype=ninja
+autocmd BufNewFile,BufRead *.exs set filetype=elixir
 
 "autocmd Filetype cpp set tags+=~/.vim/tags/stdlib
 "autocmd Filetype cpp set tags+=~/.vim/tags/qt4
