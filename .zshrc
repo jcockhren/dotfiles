@@ -1,4 +1,4 @@
-export WORKON_HOME=$HOME/atiba/.virtualenvs
+export WORKON_HOME=$HOME/.tools/virtualenv
 export PATH="$HOME/.local/bin:/usr/local/bin:/opt/e17/bin:$PATH"
 export PYTHONPATH="/opt/e17/lib/python2.7/site-packages:$PYTHONPATH"
 export LD_LIBRARY_PATH="/opt/lib64:/opt/e17/lib:$LD_LIBRARY_PATH"
@@ -75,6 +75,13 @@ alias gco='git checkout'
 alias gbr='git branch'
 alias gcl='git clone'
 alias gap='git add -p'
+alias gl='git log'
+alias gll='git lol'
+alias gla='git lola'
+alias gcia='git commit -a'
+alias gm='git merge --no-ff'
+alias gd='git diff'
+
 # cool ones
 alias rmr="rm -rf"
 alias ls="ls --color"
