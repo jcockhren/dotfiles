@@ -9,6 +9,7 @@ let g:syntastic_enable_signs = 1
 call pathogen#infect()
 "set autoindent
 set smartindent
+set cursorline
 set mouse=a
 set showmatch
 "colorscheme marklar
@@ -274,6 +275,11 @@ function! StatuslineTabWarning()
     endif
     return b:statusline_tab_warning
 endfunction
+
+let g:tagbar_autoclose = 0
+let g:tagbar_usearrows = 1
+nnoremap <silent> <Leader>b :TagbarToggle<CR>
+
 
 set colorcolumn=80
 " highlight OverLength ctermbg=red ctermfg=white guibg=#592929
