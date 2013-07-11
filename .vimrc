@@ -21,12 +21,13 @@ set laststatus=2
 set t_Co=256
 set encoding=utf-8 
 "let g:Powerline_theme = 'solarized256'
-set foldmethod=indent
+"set foldmethod=indent
+
 
 syntax on
 let mojo_highlight_data = 1
 set hls
-
+set undofile 
 set softtabstop=4
 set shiftwidth=4
 set expandtab
@@ -81,6 +82,10 @@ set completeopt=menuone,menu,longest,preview
 
 set complete-=i
 
+let g:ctrlp_z_nerdtree = 1
+let g:ctrlp_extensions = ['Z', 'F']
+nnoremap sz :CtrlPZ<Cr>
+nnoremap sf :CtrlPF<Cr>
 
 autocmd CursorMovedI * if pumvisible()  == 0|pclose|endif
 autocmd InsertLeave * if pumvisible()  == 0|pclose|endif
@@ -89,6 +94,7 @@ map <C-b> :!make<CR>
 map <C-u> :!./run_tests --log_level=test_suite<CR>
 map <C-c> :!make clean
 map <C-t> :!make test<CR>
+map fe :NERDTreeToggle<CR>
 
 ",v brings up my .vimrc
 "",V reloads it -- making all changes active (have to save first) 
@@ -137,6 +143,15 @@ let g:Tex_Env_frame = "\\begin{frame}{<++>}\<CR><++>\<CR>\\end{frame}\<CR>\<CR><
 let g:Tex_Env_fframe = "\\begin{fframe}[<++>]{<++>}\<CR><++>\<CR>\\end{fframe}\<CR>\<CR><++>"
 let g:Tex_Env_sverb = "\\begin{sverb}\<CR>\uncover\<<++>\>{<++>}\<CR>\\end{sverb}"
 let g:Tex_AutoFolding = 0
+
+noremap ,t :call PyUnitRunTests()<CR>
+noremap! ,t <Esc>:call PyUnitRunTests()<CR>
+
+"let g:PyUnitTestsStructure = 'side-by-side'
+"let g:PyUnitConfirmTestCreation = 1
+
+let g:django_projects = '~/sophic/repos'
+let g:django_activate_virtualenv = 1 
 
 " use cppcheck
 "comp cppcheck
