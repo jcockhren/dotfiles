@@ -1,10 +1,5 @@
-export WORKON_HOME=$HOME/.tools/virtualenv
 export PATH="$HOME/.local/bin:/usr/local/bin:/opt/e17/bin:$PATH"
-export PYTHONPATH="/opt/e17/lib/python2.7/site-packages:$PYTHONPATH"
-export LD_LIBRARY_PATH="/opt/lib64:/opt/e17/lib:$LD_LIBRARY_PATH"
-export PROJECT_HOME=$HOME/atiba/sources/django
 export VISUAL=vim
-source /usr/local/bin/virtualenvwrapper.sh
 #source /home/jurnell/.pythonbrew/etc/bashrc
 
 #source /home/jurnell/.rvm/scripts/rvm
@@ -14,6 +9,14 @@ source ~/.tools/zshuery/zshuery.sh
 load_defaults
 load_completion ~/.tools/zshuery/completion
 load_correction
+
+if is_linux; then 
+    export WORKON_HOME=$HOME/.tools/virtualenv
+    export PYTHONPATH="/opt/e17/lib/python2.7/site-packages:$PYTHONPATH"
+    export LD_LIBRARY_PATH="/opt/lib64:/opt/e17/lib:$LD_LIBRARY_PATH"
+    export PROJECT_HOME=$HOME/atiba/sources/django
+    source /usr/local/bin/virtualenvwrapper.sh
+fi
 
 setopt prompt_subst
 
@@ -58,7 +61,11 @@ alias ccd="venv_cd"
 
 PROMPT=' %{$fg_bold[green]%}$(COLLAPSED_DIR)%{$reset_color%} ${vcs_info_msg_0_}
 %{$fg[yellow]%}$(prompt_char)%{$reset_color%} ' 
-RPROMPT='%{$fg[red]%}$(rvm current)%{$reset_color%}'
+if is_linux; then
+    RPROMPT='%{$fg[red]%}$(rvm current)%{$reset_color%}'
+else
+    RPROMPT=''
+fi
 source ~/.tools/zsh-history-substring-search/zsh-history-substring-search.zsh
 #local s=$(tmux has-session -t main 2>/dev/null)
 #[[ $s != "" ]] || {
