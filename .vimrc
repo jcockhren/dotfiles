@@ -1,10 +1,20 @@
 	"autocmd! bufwritepost .vimrc source %
 set nocompatible
 let g:syntastic_cpp_compiler = 'clang++'
+let g:syntastic_cpp_config_file = '.clang_complete'
+let g:syntastic_cpp_compiler_options = '-fPIC'
 "let g:syntastic_python_checker = 'flakes8'
 let g:syntastic_check_on_open = 1
 let g:syntastic_enable_signs = 1
-"let g:syntastic_auto_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+
+let g:clang_complete_copen = 1
+"let g:clang_user_options='|| exit 0'
+let g:clang_auto_select = 1
+let g:clang_use_library=1
+
+au! BufEnter *.cc let b:fswitchdst = 'h' | let b:fswitchlocs = './'
+au! BufEnter *.h let b:fswitchdst = 'cc,c' | let b:fswitchlocs = './'
 
 call pathogen#infect()
 "set autoindent
@@ -55,8 +65,10 @@ autocmd BufNewFile,BufRead *.ninja set filetype=ninja
 autocmd BufNewFile,BufRead *.exs set filetype=elixir
 
 "autocmd Filetype cpp set tags+=~/.vim/tags/stdlib
-"autocmd Filetype cpp set tags+=~/.vim/tags/qt4
+autocmd Filetype cpp set tags+=~/.vim/tags/qtcore
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+"autocmd FileType cpp set omnifunc=complete#CompleteTags
+"autocmd FileType cpp set omnifunc=omni#cpp#complete#Main
 autocmd FileType css,scss,styl set omnifunc=htmlcomplete#CompleteCSS
 autocmd Filetype ruby compiler ruby
 
@@ -69,14 +81,14 @@ inoremap <expr> }  strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}
 
 
 "Omni complete related
-"map <F12> :!ctags -R --sort=yes --c++-kinds=+svpctn --fields=+iaS --extra=+q .<CR> 
+map <F12> :!ctags -R --sort=yes --c++-kinds=+svpctn --fields=+iaS --extra=+q .<CR> 
 
 "let OmniCpp_NamespaceSearch = 2
-"let OmniCpp_DisplayMode = 1
+let OmniCpp_DisplayMode = 1
 "let OmniCpp_ShowPrototypeInAbbr = 1
-"let OmniCpp_MayCompleteDot = 1
-"let OmniCpp_MayCompleteArrow = 1
-"let OmniCpp_MayCompleteScope = 1
+let OmniCpp_MayCompleteDot = 1
+let OmniCpp_MayCompleteArrow = 1
+let OmniCpp_MayCompleteScope = 1
 
 set completeopt=menuone,menu,longest,preview
 
@@ -312,3 +324,8 @@ map gst :Gstatus<CR>
 map gl :Glog<CR>
 
 map jk <ESC>
+
+"FSwitch mappings
+nmap <silent> <Leader>of :FSHere<cr>
+nmap <silent> <Leader>oL :FSSplitRight<cr>
+nmap <silent> <Leader>oJ :FSSplitBelow<cr>
