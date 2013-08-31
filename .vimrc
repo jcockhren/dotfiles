@@ -32,6 +32,8 @@ set t_Co=256
 set encoding=utf-8 
 "let g:Powerline_theme = 'solarized256'
 "set foldmethod=indent
+set nofoldenable
+let g:DisableAutoPHPFolding = 1 
 
 
 syntax on
@@ -63,6 +65,7 @@ autocmd BufNewFile,BufRead *.pro set filetype=make
 autocmd BufNewFile,BufRead SCons* set filetype=scons
 autocmd BufNewFile,BufRead *.ninja set filetype=ninja
 autocmd BufNewFile,BufRead *.exs set filetype=elixir
+autocmd BufNewFile,BufRead *.sls set filetype=yaml
 
 "autocmd Filetype cpp set tags+=~/.vim/tags/stdlib
 autocmd Filetype cpp set tags+=~/.vim/tags/qtcore
