@@ -9,9 +9,9 @@ let g:syntastic_enable_signs = 1
 let g:syntastic_auto_loc_list = 1
 
 let g:clang_complete_copen = 1
-"let g:clang_user_options='|| exit 0'
+let g:clang_user_options='|| exit 0'
 let g:clang_auto_select = 1
-let g:clang_use_library=1
+"let g:clang_use_library=1
 
 au! BufEnter *.cc let b:fswitchdst = 'h' | let b:fswitchlocs = './'
 au! BufEnter *.h let b:fswitchdst = 'cc,c' | let b:fswitchlocs = './'
@@ -44,7 +44,7 @@ set softtabstop=4
 set shiftwidth=4
 set expandtab
 
-set nowrap linebreak textwidth=80
+"set nowrap linebreak textwidth=80
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
