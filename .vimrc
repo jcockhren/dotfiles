@@ -9,9 +9,9 @@ let g:syntastic_enable_signs = 1
 let g:syntastic_auto_loc_list = 1
 
 let g:clang_complete_copen = 1
-"let g:clang_user_options='|| exit 0'
+let g:clang_user_options='|| exit 0'
 let g:clang_auto_select = 1
-let g:clang_use_library=1
+"let g:clang_use_library=1
 
 au! BufEnter *.cc let b:fswitchdst = 'h' | let b:fswitchlocs = './'
 au! BufEnter *.h let b:fswitchdst = 'cc,c' | let b:fswitchlocs = './'
@@ -32,6 +32,8 @@ set t_Co=256
 set encoding=utf-8 
 "let g:Powerline_theme = 'solarized256'
 "set foldmethod=indent
+set nofoldenable
+let g:DisableAutoPHPFolding = 1 
 
 
 syntax on
@@ -42,7 +44,7 @@ set softtabstop=4
 set shiftwidth=4
 set expandtab
 
-set nowrap linebreak textwidth=80
+"set nowrap linebreak textwidth=80
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -63,6 +65,7 @@ autocmd BufNewFile,BufRead *.pro set filetype=make
 autocmd BufNewFile,BufRead SCons* set filetype=scons
 autocmd BufNewFile,BufRead *.ninja set filetype=ninja
 autocmd BufNewFile,BufRead *.exs set filetype=elixir
+autocmd BufNewFile,BufRead *.sls set filetype=yaml
 
 "autocmd Filetype cpp set tags+=~/.vim/tags/stdlib
 autocmd Filetype cpp set tags+=~/.vim/tags/qtcore
