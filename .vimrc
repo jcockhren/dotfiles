@@ -178,7 +178,7 @@ let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_auto_select = 1
 " Disable neocomplete for python
 " Use jedi instead
-"autocmd FileType python NeoCompleteLock
+autocmd FileType python NeoComplCacheLock
 map <c-j> <c-w>j
 map <c-k> <c-w>k
 map <c-l> <c-w>l
