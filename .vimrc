@@ -198,6 +198,9 @@ command -nargs=* Make make <args> | cwindow 10
 nnoremap <F9> i<CR><ESC>
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_auto_select = 1
+" Disable neocomplete for python
+" Use jedi instead
+autocmd FileType python NeoCompleteLock
 map <c-j> <c-w>j
 map <c-k> <c-w>k
 map <c-l> <c-w>l
