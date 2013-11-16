@@ -3,7 +3,6 @@ set nocompatible
 let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_cpp_config_file = '.clang_complete'
 let g:syntastic_cpp_compiler_options = '-fPIC'
-"let g:syntastic_python_checker = 'flakes8'
 let g:syntastic_check_on_open = 1
 let g:syntastic_enable_signs = 1
 let g:syntastic_auto_loc_list = 1
@@ -55,7 +54,6 @@ set statusline+=%*
 
 
 filetype plugin on
-"set omnifunc=syntaxcomplete#Complete
 set grepprg=grep\ -nH\ $*
 let g:tex_flavor='latex'
 
@@ -124,9 +122,6 @@ map <silent> ,V :source /home/jurnell/.vimrc<CR>:filetype detect<CR>:exe ":echo 
 let vimclojure#HighlightBuiltins=1
 let vimclojure#ParenRainbow=1
 
-
-"autocmd BufWritePost *.py call Flake8()
-
 let g:clojure_simplefold_nestable_start_expr = '\v\(defn'
 let g:clojure_simplefold_nestable_end_expr = '\v^\s*$'
 
@@ -177,27 +172,6 @@ let g:django_activate_virtualenv = 1
 
 " plug make ouput on quickfix window
 command -nargs=* Make make <args> | cwindow 10
-
-" toggles the quickfix window.
-"command -bang -nargs=? QFix call
-"#QFixToggle(<bang>0)
-"function! QFixToggle(forced)
-"	if exists("g:qfix_win") && a:forced == 0
-"		cclose
-"	else
-"		execute "copen 10"
-"	endif
-"endfunction
-
-" used to track the quickfix window
-"augroup QFixToggle
-"	autocmd!
-"	autocmd BufWinEnter quickfix let g:qfix_win = bufnr("$")
-"	autocmd BufWinLeave * if exists("g:qfix_win") && expand("<abuf>") == g:qfix_win | unlet! g:qfix_win | endif
-"augroup END
-
-" show/hide quickfix window
-"noremap <silent> <F7> <ESC>:QFix<CR>
 
 nnoremap <F9> i<CR><ESC>
 let g:neocomplcache_enable_at_startup = 1
@@ -319,8 +293,6 @@ nnoremap <silent> <Leader>b :TagbarToggle<CR>
 
 
 set colorcolumn=80
-" highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-" match OverLength /\%81v.\+/
 
 map ev :vsplit
 map ee :split
