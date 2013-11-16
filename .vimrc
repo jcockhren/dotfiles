@@ -39,10 +39,14 @@ let g:DisableAutoPHPFolding = 1
 syntax on
 let mojo_highlight_data = 1
 set hls
-set undofile 
 set softtabstop=4
 set shiftwidth=4
 set expandtab
+
+if has("persistent_undo")
+    set undodir =~/.undodir//
+    set undofile
+endif
 
 "set nowrap linebreak textwidth=80
 set statusline+=%#warningmsg#
@@ -335,3 +339,4 @@ map jk <ESC>
 nmap <silent> <Leader>of :FSHere<cr>
 nmap <silent> <Leader>oL :FSSplitRight<cr>
 nmap <silent> <Leader>oJ :FSSplitBelow<cr>
+
