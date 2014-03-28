@@ -1,4 +1,4 @@
-export PATH="$HOME/.local/bin:/usr/local/bin:/opt/e17/bin:$PATH"
+export PATH="$HOME/.tools/rbenv/bin:$HOME/.local/bin:/usr/local/bin:$PATH"
 export VISUAL=vim
 #source /home/jurnell/.pythonbrew/etc/bashrc
 
@@ -62,7 +62,7 @@ alias ccd="venv_cd"
 PROMPT=' %{$fg_bold[green]%}$(COLLAPSED_DIR)%{$reset_color%} ${vcs_info_msg_0_}
 %{$fg[yellow]%}$(prompt_char)%{$reset_color%} ' 
 if is_linux; then
-    RPROMPT='%{$fg[red]%}$(rvm current)%{$reset_color%}'
+    RPROMPT='%{$fg[red]%}$(rbenv version-name)@$(rbenv gemset active)%{$reset_color%}'
 else
     RPROMPT=''
 fi
@@ -75,6 +75,7 @@ source ~/.tools/zsh-history-substring-search/zsh-history-substring-search.zsh
 #PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 eval "$(fasd --init auto)"
+eval "$(rbenv init -)"
 
 alias gst='git status'
 alias gci='git commit'
@@ -96,7 +97,12 @@ alias ll='ls -l'
 alias la='ls -a'
 alias df='df -h'
 
-alias rdk="rvm use ruby-1.9.3@developingkids"
+#rbenv
+alias rb='rbenv'
+alias rg='rbenv gemset'
+alias rl='rbenv local'
+
+#alias rdk="rvm use ruby-1.9.3@developingkids"
 
 # fasd
 alias v='f -e vi'
@@ -109,3 +115,8 @@ unset keycode
 
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
+
+gi() {
+    gem install $@ --no-ri --no-rdoc;
+    rbenv rehash; rehash
+}

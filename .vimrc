@@ -146,7 +146,7 @@ map <F1> :%s/<C-r><C-w>//gc<left><left><left>
 
 let g:tex_flavor='latex'
 
-set directory=~/.backup//
+"set directory=~/.backup//
 
 imap ii <Esc>
 imap ,, <Esc>
@@ -157,6 +157,9 @@ let g:Tex_Env_frame = "\\begin{frame}{<++>}\<CR><++>\<CR>\\end{frame}\<CR>\<CR><
 let g:Tex_Env_fframe = "\\begin{fframe}[<++>]{<++>}\<CR><++>\<CR>\\end{fframe}\<CR>\<CR><++>"
 let g:Tex_Env_sverb = "\\begin{sverb}\<CR>\uncover\<<++>\>{<++>}\<CR>\\end{sverb}"
 let g:Tex_AutoFolding = 0
+
+autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
+
 
 noremap ,t :call PyUnitRunTests()<CR>
 noremap! ,t <Esc>:call PyUnitRunTests()<CR>

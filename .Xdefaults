@@ -6,7 +6,7 @@ URxvt*boldFont: xft:Terminus:bold:pixelsize=14
 !URxvt.font: -*-terminus-medium-*-*-*-8-*-*-*-*-*-*-*
 !URxvt.boldFont: -*-terminus-bold-*-*-*-8-*-*-*-*-*-*-*
 
-URxvt.urlLauncher: /usr/bin/firefox
+URxvt.urlLauncher: /usr/bin/chromium-browser
 URxvt.matcher.button: 1
 
 URxvt*perl-lib: /usr/lib/urxvt/perl/
