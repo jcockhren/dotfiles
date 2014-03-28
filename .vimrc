@@ -159,6 +159,7 @@ let g:Tex_Env_sverb = "\\begin{sverb}\<CR>\uncover\<<++>\>{<++>}\<CR>\\end{sverb
 let g:Tex_AutoFolding = 0
 
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
+autocmd Filetype yaml setlocal ts=2 sts=2 sw=2
 
 
 noremap ,t :call PyUnitRunTests()<CR>
