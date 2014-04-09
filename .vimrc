@@ -77,6 +77,10 @@ autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType css,scss,styl set omnifunc=htmlcomplete#CompleteCSS
 autocmd Filetype ruby compiler ruby
 
+autocmd InsertEnter * syn clear EOLWS | syn match EOLWS excludenl /\s\+\%#\@!$/
+autocmd InsertLeave * syn clear EOLWS | syn match EOLWS excludenl /\s\+$/
+highlight EOLWS ctermbg=red guibg=red
+
 inoremap ( ()<Left>
 inoremap <expr> )  strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
 inoremap [ []<Left>
