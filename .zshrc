@@ -12,9 +12,9 @@ load_correction
 
 if is_linux; then 
     export WORKON_HOME=$HOME/.tools/virtualenv
-    export PYTHONPATH="/opt/e17/lib/python2.7/site-packages:$PYTHONPATH"
-    export LD_LIBRARY_PATH="/opt/lib64:/opt/e17/lib:$LD_LIBRARY_PATH"
-    export PROJECT_HOME=$HOME/atiba/sources/django
+    #export PYTHONPATH="/opt/e17/lib/python2.7/site-packages:$PYTHONPATH"
+    #export LD_LIBRARY_PATH="/opt/lib64:/opt/e17/lib:$LD_LIBRARY_PATH"
+    #export PROJECT_HOME=$HOME/atiba/sources/django
     source /usr/local/bin/virtualenvwrapper.sh
 fi
 
