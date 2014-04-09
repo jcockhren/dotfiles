@@ -89,6 +89,9 @@ alias gla='git lola'
 alias gcia='git commit -a'
 alias gm='git merge --no-ff'
 alias gd='git diff'
+alias gp='git push'
+alias gpl='git pull --no-ff'
+alias gf='git fetch'
 
 # cool ones
 alias rmr="rm -rf"
