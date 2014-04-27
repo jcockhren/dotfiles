@@ -90,7 +90,7 @@ alias gcia='git commit -a'
 alias gm='git merge --no-ff'
 alias gd='git diff'
 alias gp='git push'
-alias gpl='git pull --no-ff'
+alias gpl='git pull --ff'
 alias gf='git fetch'
 
 # cool ones
