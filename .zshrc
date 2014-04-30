@@ -92,7 +92,7 @@ alias gd='git diff'
 alias gp='git push'
 alias gpl='git pull --ff'
 alias gf='git fetch'
-
+alias ga='git add'
 # cool ones
 alias rmr="rm -rf"
 alias ls="ls --color"
