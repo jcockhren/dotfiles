@@ -1,8 +1,6 @@
 export PATH="$HOME/.tools/rbenv/bin:$HOME/.local/bin:/usr/local/bin:$PATH"
 export VISUAL=vim
-#source /home/jurnell/.pythonbrew/etc/bashrc
 
-#source /home/jurnell/.rvm/scripts/rvm
 bindkey -v
 source ~/.tools/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.tools/zshuery/zshuery.sh
@@ -10,7 +8,8 @@ load_defaults
 load_completion ~/.tools/zshuery/completion
 load_correction
 
-if is_linux; then 
+if is_linux; then
+    export TERM=linux
     export WORKON_HOME=$HOME/.tools/virtualenv
     #export PYTHONPATH="/opt/e17/lib/python2.7/site-packages:$PYTHONPATH"
     #export LD_LIBRARY_PATH="/opt/lib64:/opt/e17/lib:$LD_LIBRARY_PATH"
@@ -46,7 +45,7 @@ precmd() {
     rev=$(revstring)
     untrack=$(untrackstring)
     zstyle ':vcs_info:git*' formats "[%b@$rev%{$reset_color%}] %u%c$untrack"
-    
+
     vcs_info
 }
 
@@ -104,8 +103,6 @@ alias df='df -h'
 alias rb='rbenv'
 alias rg='rbenv gemset'
 alias rl='rbenv local'
-
-#alias rdk="rvm use ruby-1.9.3@developingkids"
 
 # fasd
 alias v='f -e vi'
