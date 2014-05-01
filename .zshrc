@@ -120,3 +120,6 @@ gi() {
     gem install $@ --no-ri --no-rdoc;
     rbenv rehash; rehash
 }
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
