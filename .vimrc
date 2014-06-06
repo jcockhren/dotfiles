@@ -5,7 +5,10 @@ let g:syntastic_cpp_config_file = '.clang_complete'
 let g:syntastic_cpp_compiler_options = '-fPIC'
 let g:syntastic_check_on_open = 1
 let g:syntastic_enable_signs = 1
-let g:syntastic_auto_loc_list = 1
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_python_checkers=['flake8']
+let g:syntastic_python_checker_args='--ignore=E501,E225'
+let g:syntastic_loc_list_height = 5
 
 let g:clang_complete_copen = 1
 let g:clang_user_options='|| exit 0'
@@ -41,6 +44,12 @@ set hls
 set softtabstop=4
 set shiftwidth=4
 set expandtab
+set ttymouse=xterm2
+
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
 
 if has("persistent_undo")
     set undodir =~/.undodir//
@@ -71,10 +80,11 @@ autocmd BufNewFile,BufRead *.sls set filetype=yaml
 
 "autocmd Filetype cpp set tags+=~/.vim/tags/stdlib
 autocmd Filetype cpp set tags+=~/.vim/tags/qtcore
-autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType html,markdown set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType python set omnifunc=pythoncomplete#Complete
 "autocmd FileType cpp set omnifunc=complete#CompleteTags
 "autocmd FileType cpp set omnifunc=omni#cpp#complete#Main
-autocmd FileType css,scss,styl set omnifunc=htmlcomplete#CompleteCSS
+autocmd FileType css,scss,styl set omnifunc=csscomplete#CompleteCSS
 autocmd Filetype ruby compiler ruby
 
 autocmd InsertEnter * syn clear EOLWS | syn match EOLWS excludenl /\s\+\%#\@!$/
@@ -164,6 +174,8 @@ let g:Tex_AutoFolding = 0
 
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
 autocmd Filetype yaml setlocal ts=2 sts=2 sw=2
+autocmd Filetype html setlocal ts=2 sts=2 sw=2
+autocmd Filetype sass setlocal ts=2 sts=2 sw=2
 
 
 noremap ,t :call PyUnitRunTests()<CR>
@@ -172,7 +184,7 @@ noremap! ,t <Esc>:call PyUnitRunTests()<CR>
 "let g:PyUnitTestsStructure = 'side-by-side'
 "let g:PyUnitConfirmTestCreation = 1
 
-let g:django_projects = '~/sophic/repos'
+let g:django_projects = '~/sophic'
 let g:django_activate_virtualenv = 1 
 
 " use cppcheck
@@ -182,11 +194,9 @@ let g:django_activate_virtualenv = 1
 command -nargs=* Make make <args> | cwindow 10
 
 nnoremap <F9> i<CR><ESC>
-let g:neocomplcache_enable_at_startup = 1
-let g:neocomplcache_enable_auto_select = 1
-" Disable neocomplete for python
-" Use jedi instead
-autocmd FileType python NeoComplCacheLock
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+let g:neocomplete#enable_at_startup = 1
+
 map <c-j> <c-w>j
 map <c-k> <c-w>k
 map <c-l> <c-w>l
