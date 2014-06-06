@@ -36,7 +36,7 @@ set encoding=utf-8
 "set foldmethod=indent
 set nofoldenable
 let g:DisableAutoPHPFolding = 1 
-
+set clipboard=unnamed
 
 syntax on
 let mojo_highlight_data = 1

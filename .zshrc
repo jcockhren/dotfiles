@@ -1,4 +1,4 @@
-export PATH="$HOME/.tools/rbenv/bin:$HOME/.local/bin:/usr/local/bin:$PATH"
+export PATH="$HOME/.local/ec2-api-tools-1.6.13.0/bin:$HOME/.tools/rbenv/bin:$HOME/.local/bin:/usr/local/bin:$PATH"
 export VISUAL=vim
 export EDITOR=vim
 
