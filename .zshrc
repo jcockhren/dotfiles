@@ -1,5 +1,6 @@
 export PATH="$HOME/.tools/rbenv/bin:$HOME/.local/bin:/usr/local/bin:$PATH"
 export VISUAL=vim
+export EDITOR=vim
 
 bindkey -v
 source ~/.tools/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
