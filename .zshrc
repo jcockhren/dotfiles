@@ -1,6 +1,10 @@
-export PATH="$HOME/.local/ec2-api-tools-1.6.13.0/bin:$HOME/.tools/rbenv/bin:$HOME/.local/bin:/usr/local/bin:$PATH"
+export PATH="$HOME/.local/haxe-3.1.3:$HOME/.local/ec2-api-tools-1.6.13.0/bin:$HOME/.tools/rbenv/bin:$HOME/.local/bin:/usr/local/bin:$PATH"
 export VISUAL=vim
 export EDITOR=vim
+
+export HAXE_HOME="$HOME/.local/haxe-3.1.3"
+export HAXE_LIBRARY_PATH="$HOME/.local/haxe-3.1.3/std:."
+export HAXE_STD_PATH="$HOME/.local/haxe-3.1.3/std:."
 
 bindkey -v
 source ~/.tools/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -107,6 +111,10 @@ alias rl='rbenv local'
 
 # fasd
 alias v='f -e vi'
+
+# ruby dev
+alias be='bundle exec'
+alias ber='bundle exec rspec'
 
 for keycode in '[' '0'; do
     bindkey "^[${keycode}A" history-substring-search-up
