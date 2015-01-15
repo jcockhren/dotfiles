@@ -116,7 +116,14 @@ alias v='f -e vi'
 alias be='bundle exec'
 alias ber='bundle exec rspec'
 
+# AWS
 alias aws='aws-mfa aws'
+
+# Tmuxinator
+alias tm='tmuxinator'
+alias tml='tmuxinator list'
+alias tmd='tmuxinator doctor'
+alias tms='tmuxinator start'
 
 for keycode in '[' '0'; do
     bindkey "^[${keycode}A" history-substring-search-up
