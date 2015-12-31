@@ -31,6 +31,11 @@ zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' stagedstr "%{$fg[green]%}*"
 zstyle ':vcs_info:*' unstagedstr "%{$fg[yellow]%}*"
 
+# Tmuxinator
+alias tm='tmuxinator'
+alias tml='tmuxinator list'
+alias tmd='tmuxinator doctor'
+alias tms='tmuxinator start'
 
 revstring() {
     git rev-parse --short HEAD 2> /dev/null
@@ -114,7 +119,8 @@ alias v='f -e vi'
 
 # ruby dev
 alias be='bundle exec'
-alias ber='bundle exec rspec'
+alias ber='bundle exec rake'
+alias spec='bundle exec rspec'
 
 # AWS
 alias aws='aws-mfa aws'
