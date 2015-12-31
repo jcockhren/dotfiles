@@ -49,7 +49,9 @@ set ttymouse=xterm2
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-k>     <Plug>(neosnippet_expand_target)
-
+inoremap <expr><C-y>  neocomplete#close_popup()
+inoremap <expr><C-e>  neocomplete#cancel_popup()
+inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
 
 if has("persistent_undo")
     set undodir =~/.undodir//
@@ -196,6 +198,8 @@ command -nargs=* Make make <args> | cwindow 10
 nnoremap <F9> i<CR><ESC>
 let g:neocomplete#sources#syntax#min_keyword_length = 3
 let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_smart_case = 1
+
 
 map <c-j> <c-w>j
 map <c-k> <c-w>k
