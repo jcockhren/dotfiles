@@ -131,6 +131,11 @@ alias tml='tmuxinator list'
 alias tmd='tmuxinator doctor'
 alias tms='tmuxinator start'
 
+# Pip
+alias pipi='pip install'
+alias pipu='pip remove'
+alias pipr='pip install -r'
+
 for keycode in '[' '0'; do
     bindkey "^[${keycode}A" history-substring-search-up
     bindkey "^[${keycode}B" history-substring-search-down
