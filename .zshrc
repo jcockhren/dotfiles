@@ -1,10 +1,10 @@
-export PATH="$HOME/.local/haxe-3.1.3:$HOME/.local/ec2-api-tools-1.6.13.0/bin:$HOME/.tools/rbenv/bin:$HOME/.local/bin:/usr/local/bin:$PATH"
+export PATH="/usr/lib/haxe:$HOME/.local/haxe-3.1.3:$HOME/.local/ec2-api-tools-1.6.13.0/bin:$HOME/.tools/rbenv/bin:$HOME/.local/bin:/usr/local/bin:$PATH"
 export VISUAL=vim
 export EDITOR=vim
-
-export HAXE_HOME="$HOME/.local/haxe-3.1.3"
-export HAXE_LIBRARY_PATH="$HOME/.local/haxe-3.1.3/std:."
-export HAXE_STD_PATH="$HOME/.local/haxe-3.1.3/std:."
+export JAVA_HOME="/usr/lib/jvm/java-8-oracle"
+export HAXE_HOME="/usr/lib/haxe"
+#export HAXE_LIBRARY_PATH="$HOME/.local/haxe-3.1.3/std:."
+#export HAXE_STD_PATH="$HOME/.local/haxe-3.1.3/std:."
 
 bindkey -v
 source ~/.tools/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -19,7 +19,7 @@ if is_linux; then
     #export PYTHONPATH="/opt/e17/lib/python2.7/site-packages:$PYTHONPATH"
     #export LD_LIBRARY_PATH="/opt/lib64:/opt/e17/lib:$LD_LIBRARY_PATH"
     #export PROJECT_HOME=$HOME/atiba/sources/django
-    source /usr/local/bin/virtualenvwrapper.sh
+    source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
 fi
 
 setopt prompt_subst
