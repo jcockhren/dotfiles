@@ -68,7 +68,12 @@ venv_cd() {
 
 alias ccd="venv_cd"
 
-PROMPT=' %{$fg_bold[green]%}$(COLLAPSED_DIR)%{$reset_color%} ${vcs_info_msg_0_}
+function collapse_pwd {
+    echo $(pwd | sed -e "s,^$HOME,~,")
+}
+
+
+PROMPT=' %{$fg_bold[green]%}$(collapse_pwd)%{$reset_color%} ${vcs_info_msg_0_}
 %{$fg[yellow]%}$(prompt_char)%{$reset_color%} ' 
 if is_linux; then
     RPROMPT='%{$fg[red]%}$(rbenv version-name)@$(rbenv gemset active)%{$reset_color%}'
@@ -136,6 +141,12 @@ alias pipi='pip install'
 alias pipu='pip remove'
 alias pipr='pip install -r'
 
+# Terraform
+alias tf='terraform'
+
+# Vagrant
+alias va='vagrant'
+
 for keycode in '[' '0'; do
     bindkey "^[${keycode}A" history-substring-search-up
     bindkey "^[${keycode}B" history-substring-search-down
@@ -152,3 +163,34 @@ gi() {
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f /home/jurnell/neptunehealth/google-cloud-sdk/path.zsh.inc ]; then
+  source '/home/jurnell/neptunehealth/google-cloud-sdk/path.zsh.inc'
+fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f /home/jurnell/neptunehealth/google-cloud-sdk/completion.zsh.inc ]; then
+  source '/home/jurnell/neptunehealth/google-cloud-sdk/completion.zsh.inc'
+fi
+
+/usr/bin/gpg-agent > /dev/null 2>&1
+EXIT=$?
+if [ ${EXIT} -ne 0 ]; then
+  /bin/rm -f ${HOME}/.gnupg/gpg-agent-info
+fi
+
+if [[ $(uname) == Linux ]]; then
+  if [ ! -s "${HOME}/.gnupg/gpg-agent-info" ]; then
+    # If we're coming in over ssh, don't prompt with the GUI pinentry
+    export GPG_TTY=$(tty)
+    if [[ -n "$SSH_CONNECTION" ]] ;then
+      export PINENTRY_USER_DATA="USE_CURSES=1"
+    fi
+    unset GPG_AGENT_INFO
+    /usr/bin/gpg-agent --daemon --enable-ssh-support > ${HOME}/.gnupg/gpg-agent-info
+  fi
+  . "${HOME}/.gnupg/gpg-agent-info"
+  export GPG_TTY=$(tty)
+  export GPG_AGENT_INFO
+fi
