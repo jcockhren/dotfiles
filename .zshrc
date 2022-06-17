@@ -1,26 +1,12 @@
-export PATH="/usr/lib/haxe:$HOME/.local/haxe-3.1.3:$HOME/.local/ec2-api-tools-1.6.13.0/bin:$HOME/.tools/rbenv/bin:$HOME/.local/bin:/usr/local/bin:$PATH"
 export VISUAL=vim
 export EDITOR=vim
 export JAVA_HOME="/usr/lib/jvm/java-8-oracle"
 export HAXE_HOME="/usr/lib/haxe"
-#export HAXE_LIBRARY_PATH="$HOME/.local/haxe-3.1.3/std:."
-#export HAXE_STD_PATH="$HOME/.local/haxe-3.1.3/std:."
+export WORKON_HOME=$HOME/.tools/virtualenv
 
 bindkey -v
 source ~/.tools/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ~/.tools/zshuery/zshuery.sh
-load_defaults
-load_completion ~/.tools/zshuery/completion
-load_correction
-
-if is_linux; then
-    export TERM=linux
-    export WORKON_HOME=$HOME/.tools/virtualenv
-    #export PYTHONPATH="/opt/e17/lib/python2.7/site-packages:$PYTHONPATH"
-    #export LD_LIBRARY_PATH="/opt/lib64:/opt/e17/lib:$LD_LIBRARY_PATH"
-    #export PROJECT_HOME=$HOME/atiba/sources/django
-    source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
-fi
+source ~/.tools/zsh-history-substring-search/zsh-history-substring-search.zsh
 
 setopt prompt_subst
 
