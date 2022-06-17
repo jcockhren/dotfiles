@@ -38,11 +38,10 @@ zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' stagedstr "%{$fg[green]%}*"
 zstyle ':vcs_info:*' unstagedstr "%{$fg[yellow]%}*"
 
-# Tmuxinator
-alias tm='tmuxinator'
-alias tml='tmuxinator list'
-alias tmd='tmuxinator doctor'
-alias tms='tmuxinator start'
+
+###############
+# Functions
+###############
 
 revstring() {
     git rev-parse --short HEAD 2> /dev/null
@@ -73,31 +72,37 @@ venv_cd() {
     }
 }
 
-alias ccd="venv_cd"
 
 function collapse_pwd {
     echo $(pwd | sed -e "s,^$HOME,~,")
 }
 
 
+gi() {
+    gem install $@ --no-ri --no-rdoc;
+    rbenv rehash; rehash
+}
+
+
 PROMPT=' %{$fg_bold[green]%}$(collapse_pwd)%{$reset_color%} ${vcs_info_msg_0_}
-%{$fg[yellow]%}$(prompt_char)%{$reset_color%} ' 
-if is_linux; then
-    RPROMPT='%{$fg[red]%}$(rbenv version-name)@$(rbenv gemset active)%{$reset_color%}'
-else
-    RPROMPT=''
-fi
-source ~/.tools/zsh-history-substring-search/zsh-history-substring-search.zsh
+%{$fg[yellow]%{$reset_color%} '
+#if is_linux; then
+#    RPROMPT='%{$fg[red]%}$(rbenv version-name)@$(rbenv gemset active)%{$reset_color%}'
+#else
+#    RPROMPT=''
+#fi
+
 #local s=$(tmux has-session -t main 2>/dev/null)
 #[[ $s != "" ]] || {
 #	tmux new-session -d -s main \; splitw -d -h \; send htop enter \; selectp -R \; splitw -d \; send "ssh thoth@zawty" enter \; send "htop" enter \; selectp -D \; send "ssh thoth@zawty" enter \; new-window -t main -n thoth \; splitw -d -h \; splitw \; selectp -R \; splitw \; prev \;  attach -t main
 #}
 
-#PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
-eval "$(fasd --init auto)"
-eval "$(rbenv init -)"
+##############
+# Aliases
+##############
 
+# Git
 alias gst='git status'
 alias gci='git commit'
 alias gco='git checkout'
@@ -120,6 +125,7 @@ alias ls="ls --color"
 alias ll='ls -l'
 alias la='ls -a'
 alias df='df -h'
+alias ccd="venv_cd"
 
 #rbenv
 alias rb='rbenv'
@@ -154,6 +160,11 @@ alias tf='terraform'
 # Vagrant
 alias va='vagrant'
 
+
+##################
+# Key Bindings
+##################
+
 for keycode in '[' '0'; do
     bindkey "^[${keycode}A" history-substring-search-up
     bindkey "^[${keycode}B" history-substring-search-down
@@ -163,10 +174,9 @@ unset keycode
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
 
-gi() {
-    gem install $@ --no-ri --no-rdoc;
-    rbenv rehash; rehash
-}
+##################
+# Executable Paths
+##################
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
