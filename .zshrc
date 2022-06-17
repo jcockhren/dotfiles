@@ -8,9 +8,30 @@ bindkey -v
 source ~/.tools/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.tools/zsh-history-substring-search/zsh-history-substring-search.zsh
 
-setopt prompt_subst
 
 autoload -Uz vcs_info
+
+autoload -U colors && colors
+autoload -U compinit && zmodload -i zsh/complist
+autoload -U edit-command-line && zle -N edit-command-line
+autoload -U url-quote-magic && zle -N self-insert url-quote-magic
+autoload -U zmv
+
+setopt complete_in_word
+
+
+setopt pushd_ignore_dups auto_pushd auto_name_dirs auto_cd \
+	prompt_subst no_beep multios extended_glob interactive_comments
+
+HISTFILE=~/.zsh_history
+HISTSIZE=40960
+SAVEHIST=40960
+setopt HIST_EXPIRE_DUPS_FIRST
+
+setopt hist_ignore_dups hist_ignore_space hist_reduce_blanks hist_verify \
+	hist_expire_dups_first hist_find_no_dups share_history extended_history \
+	append_history inc_append_history nobanghist
+setopt prompt_subst
 
 zstyle ':vcs_info:*' enable git svn
 zstyle ':vcs_info:*' check-for-changes true
