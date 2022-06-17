@@ -178,13 +178,16 @@ bindkey -M vicmd 'j' history-substring-search-down
 # Executable Paths
 ##################
 
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
+typeset -U path
+path+=/usr/local/heroku/bin
+path+=$HOME/.rvm/bin
+path+=$HOME/.rbenv/bin
+path+=/usr/lib/haxe
+path+=$HOME/.local/haxe-3.1.3
+path+=$HOME/.local/ec2-api-tools-1.6.13.0/bin
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f /home/jurnell/neptunehealth/google-cloud-sdk/path.zsh.inc ]; then
-  source '/home/jurnell/neptunehealth/google-cloud-sdk/path.zsh.inc'
-fi
+path[1,0]=$HOME/.local/bin
+path=($^path(N))
 
 # The next line enables shell command completion for gcloud.
 if [ -f /home/jurnell/neptunehealth/google-cloud-sdk/completion.zsh.inc ]; then
