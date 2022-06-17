@@ -189,10 +189,20 @@ path+=$HOME/.local/ec2-api-tools-1.6.13.0/bin
 path[1,0]=$HOME/.local/bin
 path=($^path(N))
 
-# The next line enables shell command completion for gcloud.
-if [ -f /home/jurnell/neptunehealth/google-cloud-sdk/completion.zsh.inc ]; then
-  source '/home/jurnell/neptunehealth/google-cloud-sdk/completion.zsh.inc'
-fi
+export PATH
+
+
+###############################
+# 3rd-party Tool Initialization
+###############################
+
+whence -p fasd && eval "$(fasd --init auto)"
+whence rbenv && eval "$(rbenv init -)"
+
+
+##################
+# GPG Agent w/ SSH
+##################
 
 /usr/bin/gpg-agent > /dev/null 2>&1
 EXIT=$?
