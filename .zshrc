@@ -154,6 +154,15 @@ alias pipi='pip install'
 alias pipu='pip remove'
 alias pipr='pip install -r'
 
+# Pipenv
+alias pi='pipenv install'
+alias pr='pipenv run'
+alias pu='pipenv update'
+
+# Poetry
+alias poa='poetry add'
+alias por='poetry run'
+
 # Terraform
 alias tf='terraform'
 
