@@ -183,6 +183,9 @@ alias tf='terraform'
 # Vagrant
 alias va='vagrant'
 
+# Tailscale
+alias ts='tailscale'
+alias tss='tailscale status'
 
 ##################
 # Key Bindings
