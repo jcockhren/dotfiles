@@ -166,6 +166,17 @@ alias pu='pipenv update'
 alias poa='poetry add'
 alias por='poetry run'
 
+# Instruqt
+alias it='instruqt track'
+alias itc='instruqt track create'
+alias itd='instruqt track deploy'
+alias itl='instruqt track logs'
+alias ito='instruqt track open'
+alias itp='instruqt track push'
+alias itv='instruqt track validate'
+alias itpl='instruqt track pull'
+alias icc='instruqt challenge create'
+
 # Terraform
 alias tf='terraform'
 
