@@ -119,13 +119,16 @@ alias gp='git push'
 alias gpl='git pull --ff'
 alias gf='git fetch'
 alias ga='git add'
+
 # cool ones
 alias rmr="rm -rf"
 alias ls="ls --color"
 alias ll='ls -l'
 alias la='ls -a'
+alias lla='ls -al'
 alias df='df -h'
 alias ccd="venv_cd"
+alias ..='cd ..'
 
 #rbenv
 alias rb='rbenv'
