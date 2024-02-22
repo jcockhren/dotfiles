@@ -1,10 +1,8 @@
 URxvt*background: Black
 URxvt*foreground: White
 URxvt*scrollBar: false
-URxvt*font: xft:Terminus:medium:pixelsize=14
-URxvt*boldFont: xft:Terminus:bold:pixelsize=14
-!URxvt.font: -*-terminus-medium-*-*-*-8-*-*-*-*-*-*-*
-!URxvt.boldFont: -*-terminus-bold-*-*-*-8-*-*-*-*-*-*-*
+URxvt*font: xft:NotoMono:medium:pixelsize=18
+URxvt*boldFont: xft:NotoMono:bold:pixelsize=18
 
 URxvt.urlLauncher: /usr/bin/chromium-browser
 URxvt.matcher.button: 1
