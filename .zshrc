@@ -18,7 +18,7 @@ autoload -U url-quote-magic && zle -N self-insert url-quote-magic
 autoload -U zmv
 
 setopt complete_in_word
-
+unsetopt BEEP
 
 setopt pushd_ignore_dups auto_pushd auto_name_dirs auto_cd \
 	prompt_subst no_beep multios extended_glob interactive_comments
