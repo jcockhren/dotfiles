@@ -18,7 +18,7 @@ autoload -U url-quote-magic && zle -N self-insert url-quote-magic
 autoload -U zmv
 
 setopt complete_in_word
-unsetopt BEEP
+
 
 setopt pushd_ignore_dups auto_pushd auto_name_dirs auto_cd \
 	prompt_subst no_beep multios extended_glob interactive_comments
@@ -84,8 +84,9 @@ gi() {
 }
 
 
-PROMPT=' %{$fg_bold[green]%}$(collapse_pwd)%{$reset_color%} ${vcs_info_msg_0_}
-%{$fg[yellow]%{$reset_color%} '
+#PROMPT='%{$fg_bold[green]%}$(collapse_pwd)%{$reset_color%}${vcs_info_msg_0_}$NEWLINE%{$fg[yellow]%{$reset_color%} '
+PROMPT='%{$fg_bold[green]%}$(collapse_pwd) %{$reset_color%}${vcs_info_msg_0_}
+$NEWLINE%{$fg[yellow]%{$reset_color%}%}$ '
 #if is_linux; then
 #    RPROMPT='%{$fg[red]%}$(rbenv version-name)@$(rbenv gemset active)%{$reset_color%}'
 #else
@@ -222,7 +223,7 @@ export PATH
 # 3rd-party Tool Initialization
 ###############################
 
-whence -p fasd && eval "$(fasd --init auto)"
+whence -p fasd > /dev/null 2>&1 && eval "$(fasd --init auto) > /dev/null 2>&1"
 whence rbenv && eval "$(rbenv init -)"
 
 
@@ -237,16 +238,19 @@ if [ ${EXIT} -ne 0 ]; then
 fi
 
 if [[ $(uname) == Linux ]]; then
+  export GPG_TTY=$(tty)
   if [ ! -s "${HOME}/.gnupg/gpg-agent-info" ]; then
     # If we're coming in over ssh, don't prompt with the GUI pinentry
-    export GPG_TTY=$(tty)
     if [[ -n "$SSH_CONNECTION" ]] ;then
       export PINENTRY_USER_DATA="USE_CURSES=1"
     fi
-    unset GPG_AGENT_INFO
-    /usr/bin/gpg-agent --daemon --enable-ssh-support > ${HOME}/.gnupg/gpg-agent-info
   fi
   . "${HOME}/.gnupg/gpg-agent-info"
-  export GPG_TTY=$(tty)
+
   export GPG_AGENT_INFO
+  export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
 fi
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$PWD/.nvmrc" ] && nvm use  # This loads nvm
