@@ -84,19 +84,8 @@ gi() {
 }
 
 
-#PROMPT='%{$fg_bold[green]%}$(collapse_pwd)%{$reset_color%}${vcs_info_msg_0_}$NEWLINE%{$fg[yellow]%{$reset_color%} '
 PROMPT='%{$fg_bold[green]%}$(collapse_pwd) %{$reset_color%}${vcs_info_msg_0_}
 $NEWLINE%{$fg[yellow]%{$reset_color%}%}$ '
-#if is_linux; then
-#    RPROMPT='%{$fg[red]%}$(rbenv version-name)@$(rbenv gemset active)%{$reset_color%}'
-#else
-#    RPROMPT=''
-#fi
-
-#local s=$(tmux has-session -t main 2>/dev/null)
-#[[ $s != "" ]] || {
-#	tmux new-session -d -s main \; splitw -d -h \; send htop enter \; selectp -R \; splitw -d \; send "ssh thoth@zawty" enter \; send "htop" enter \; selectp -D \; send "ssh thoth@zawty" enter \; new-window -t main -n thoth \; splitw -d -h \; splitw \; selectp -R \; splitw \; prev \;  attach -t main
-#}
 
 
 ##############
